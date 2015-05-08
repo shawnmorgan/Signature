@@ -1,4 +1,9 @@
 EyC3EmailSignatures::Application.routes.draw do
+
+  root :to                => 'application#index'
+  match 'preview/:size'   => 'application#preview'
+  match 'download/:size'  => 'application#download'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

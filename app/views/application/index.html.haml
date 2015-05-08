@@ -1,0 +1,55 @@
+%h2 EY C3 Signature Maker
+%hr
+
+- if @signature.errors.present?
+  .alert= @signature.errors.full_messages.to_sentence + '.'
+
+= simple_form_for(@signature, :url => root_path, :method => :get, :html => { :class => 'form-horizontal' }) do |f|
+
+  = f.input :name, :placeholder => 'Dr. John Smith'
+
+  = f.input :email, :placeholder => 'john.smith@c3.com.au', :wrapper => :append, :class => 'inline' do
+    = f.input_field :email
+    %span.add-on @c3.com.au
+
+  = f.input :phone, :placeholder => '+61 314 159 265'
+
+  = f.input :linkedin, :input_html => { :class => 'input-xxlarge' }
+
+  = f.input :company
+
+  = f.input :logo, collection: %w( c3 imc )
+
+  = f.input :website
+
+  .form-actions
+    = f.button :submit, "Generate"
+
+- if @valid
+
+  %h4 Minimal
+  .row
+    .span2
+      = link_to 'Download', url_for(:action => 'download', :size => 'minimal', :signature => params[:signature]), :class => 'btn'
+    .span10
+      %iframe{:src => url_for(:action => 'preview', :size => 'minimal', :signature => params[:signature]), :width => '100%', :height => '240'}
+
+  %h4 Medium
+  .row
+    .span2
+      = link_to 'Download', url_for(:action => 'download', :size => 'medium', :signature => params[:signature]), :class => 'btn'
+    .span10
+      %iframe{:src => url_for(:action => 'preview', :size => 'medium', :signature => params[:signature]), :width => '100%', :height => '240'}
+
+  %h4 Full-sized
+  .row
+    .span2
+      = link_to 'Download', url_for(:action => 'download', :size => 'full', :signature => params[:signature]), :class => 'btn'
+    .span10
+      %iframe{:src => url_for(:action => 'preview', :size => 'full', :signature => params[:signature]), :width => '100%', :height => '240'}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

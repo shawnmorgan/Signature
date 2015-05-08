@@ -18,7 +18,9 @@
 
   = f.input :company
 
-  = f.input :logo, collection: %w( c3 imc )
+  = f.input :address, :input_html => { :class => 'input-xxlarge' }
+
+  = f.input :logo, collection: %w( c3 imc ), include_blank: false
 
   = f.input :website
 

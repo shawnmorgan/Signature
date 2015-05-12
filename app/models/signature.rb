@@ -33,7 +33,7 @@ class Signature
   end
 
   def phone=(value)
-    @phone = number_to_phone value.gsub(/\A(\+61\s*)*/, ''), country_code: 61, delimiter: ' ' if value.present?
+    @phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
   end
 
   def email=(value)

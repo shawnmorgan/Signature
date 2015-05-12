@@ -14,15 +14,22 @@
 
   = f.input :name, :placeholder => 'Dr. John Smith'
 
-  = f.input :email, :placeholder => 'john.smith@c3.com.au', :wrapper => :append, :class => 'inline' do
-    = f.input_field :email
+  = f.input :role, :placeholder => 'Managing Consultant'
+
+  = f.input :company
+
+  = f.input :email, :wrapper => :append, :class => 'inline' do
+    = f.input_field :email, :placeholder => 'john.smith@c3.com.au'
     %span.add-on @c3.com.au
 
   = f.input :phone, :placeholder => '+61 314 159 265'
 
-  = f.input :linkedin, :input_html => { :class => 'input-xxlarge' }
+  = f.input :linkedin_name
+  = f.input :linkedin_url, :input_html => { :class => 'input-xxlarge' }
 
-  = f.input :company
+  = f.input :twitter, :wrapper => :prepend, :class => 'inline' do
+    %span.add-on @
+    = f.input_field :twitter, :placeholder => 'C3Business'
 
   = f.input :address, :input_html => { :class => 'input-xxlarge' }
 

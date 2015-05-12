@@ -8,10 +8,12 @@ class Signature
   include ActionView::Helpers::NumberHelper
 
   DEFAULTS = {
-    linkedin: 'http://www.linkedin.com/company/c3-businesssolutions',
     company:  'C3 Business Solutions',
     address:  'Level 4, 459 Little Collins St Melbourne, VIC 3000',
-    website:  'http://c3.com.au/'
+    website:  'http://c3.com.au/',
+    twitter:  'C3Business',
+    linkedin_name:  'C3 Business Solutions',
+    linkedin_url:   'http://www.linkedin.com/company/c3-businesssolutions'
   }
 
   LOGO_PATHS = {
@@ -19,9 +21,9 @@ class Signature
     'imc' =>  'http://c3.com.au/images/ey_imc_email_logo.gif'
   }
 
-  attr_accessor :name, :phone, :email, :linkedin, :company, :address, :website, :logo
+  attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo
 
-  validates :name, :phone, :email, :linkedin, :company, :address, :website, presence: true
+  validates :name, :role, :phone, :email, :company, :address, :website, :twitter, :linkedin_name, :linkedin_url, :logo, presence: true
   validates :logo, inclusion: %w( c3 imc )
 
   def persisted?
@@ -30,6 +32,12 @@ class Signature
 
   def initialize(attributes = {})
     attributes.each { |name, value| send "#{name}=", value } if attributes
+  end
+
+  DEFAULTS.each do |attribute, default_value|
+    define_method("default_#{attribute}") { DEFAULTS[attribute.to_sym] }
+    define_method("custom_#{attribute}?") { send(attribute) != send("default_#{attribute}") }
+    define_method(attribute) { instance_variable_get("@#{attribute}").presence || send("default_#{attribute}") }
   end
 
   def phone=(value)
@@ -44,12 +52,24 @@ class Signature
     "#{email}@c3.com.au" if email.present?
   end
 
-  def linkedin
-    @linkedin.presence || DEFAULTS[:linkedin]
+  def twitter=(value)
+    @twitter = value.gsub(/\A@*/, '')
   end
 
-  def linkedin_is_default?
-    linkedin == DEFAULTS[:linkedin]
+  def twitter_name
+    twitter_to_name twitter
+  end
+
+  def default_twitter_name
+    twitter_to_name default_twitter
+  end
+
+  def twitter_url
+    twitter_to_url twitter
+  end
+
+  def default_twitter_url
+    twitter_to_url default_twitter
   end
 
   def company
@@ -70,6 +90,16 @@ class Signature
 
   def logo_path
     LOGO_PATHS[logo]
+  end
+
+protected
+
+  def twitter_to_name(twitter)
+    "@#{twitter}"
+  end
+
+  def twitter_to_url(twitter)
+    URI::HTTPS.build(host: 'twitter.com', path: "/#{twitter}").to_s
   end
 
 end

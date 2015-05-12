@@ -14,8 +14,8 @@
             <%= @signature.name %><br /><%= link_to @signature.company, @signature.website %>
           </p>
           <p style="font-family:Arial,sans-serif; font-weight:normal; font-size:11px; color:#000;">
-            <span style="font-weight:bold; color:#808080;">M</span>&nbsp;&nbsp;<%= link_to @signature.phone, "tel:#{@signature.phone}" %><br />
-            <span style="font-weight:bold; color:#808080;">E</span>&nbsp;&nbsp;<%= mail_to @signature.full_email %><br />
+            Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}" %><br/>
+            Email: <%= mail_to @signature.full_email %>
           </p>
         </td>
       </tr>

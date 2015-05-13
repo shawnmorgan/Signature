@@ -14,6 +14,9 @@
             <%= @signature.name %><br /><%= link_to @signature.company, @signature.website %>
           </p>
           <p style="font-family:Arial,sans-serif; font-weight:normal; font-size:11px; color:#000;">
+            <%- if @signature.assistant_name.present? -%>
+            Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}" %> | Email: <%= mail_to @signature.assistant_email %><br/>
+            <%- end -%>
             Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}" %><br/>
             Email: <%= mail_to @signature.full_email %>
           </p>

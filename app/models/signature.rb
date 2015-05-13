@@ -54,16 +54,8 @@ class Signature
     @email = value.gsub(/@.*\Z/, '') if value.present?
   end
 
-  def assistant_email=(value)
-    @assistant_email = value.gsub(/@.*\Z/, '') if value.present?
-  end
-
   def full_email
     "#{email}@c3.com.au" if email.present?
-  end
-
-  def full_assistant_email
-    "#{assistant_email}@c3.com.au" if assistant_email.present?
   end
 
   def twitter=(value)

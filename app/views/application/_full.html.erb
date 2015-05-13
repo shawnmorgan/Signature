@@ -26,7 +26,7 @@
                 <%= @signature.company %> Pty Ltd, an EY member network company.<br/>
                 <%= @signature.address %><br/>
                 <%- if @signature.assistant_name.present? -%>
-                Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}" %> | Email: <%= mail_to @signature.full_assistant_email %><br/>
+                Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}" %> | Email: <%= mail_to @signature.assistant_email %><br/>
                 <%- end -%>
                 Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}" %><br/>
                 Email: <%= mail_to @signature.full_email %><br/>

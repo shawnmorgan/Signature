@@ -21,9 +21,11 @@ class Signature
     'imc' =>  'http://c3.com.au/images/ey_imc_email_logo.gif'
   }
 
-  attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo
+  attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo,
+                :assistant_name, :assistant_phone, :assistant_email
 
   validates :name, :role, :phone, :email, :company, :address, :website, :twitter, :linkedin_name, :linkedin_url, :logo, presence: true
+  validates :assistant_phone, :assistant_email, :presence => true, :if => Proc.new { |r| r.assistant_name.present? }
   validates :logo, inclusion: %w( c3 imc )
 
   def persisted?
@@ -44,12 +46,24 @@ class Signature
     @phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
   end
 
+  def assistant_phone=(value)
+    @assistant_phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
+  end
+
   def email=(value)
     @email = value.gsub(/@.*\Z/, '') if value.present?
   end
 
+  def assistant_email=(value)
+    @assistant_email = value.gsub(/@.*\Z/, '') if value.present?
+  end
+
   def full_email
     "#{email}@c3.com.au" if email.present?
+  end
+
+  def full_assistant_email
+    "#{assistant_email}@c3.com.au" if assistant_email.present?
   end
 
   def twitter=(value)

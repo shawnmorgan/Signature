@@ -26,7 +26,10 @@
           Email: <%= mail_to @signature.full_email %><br/>
           Twitter: <%- if @signature.custom_twitter? -%><%= link_to @signature.twitter_name, @signature.twitter_url %> &amp; <%- end -%><%= link_to @signature.default_twitter_name, @signature.default_twitter_url %><br/>
           Linkedin: <%- if @signature.custom_linkedin_url? -%><%= link_to @signature.linkedin_name, @signature.linkedin_url %> &amp; <%- end -%><%= link_to @signature.default_linkedin_name, @signature.default_linkedin_url %><br/>
-          Website: <%= link_to @signature.website_host, @signature.website %> &amp; <%= link_to 'www.ey.com/analytics', 'http://www.ey.com/analytics' %>
+          Website: <%= link_to @signature.website_host, @signature.website %> &amp; <%= link_to 'www.ey.com/analytics', 'http://www.ey.com/analytics' %><br/>
+          <%- if @signature.assistant_name.present? -%>
+          Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}" %> | Email: <%= mail_to @signature.full_assistant_email %>
+          <%- end -%>
         </p>
       </td>
     </tr>

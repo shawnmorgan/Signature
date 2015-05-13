@@ -37,6 +37,14 @@
 
   = f.input :website
 
+  = f.input :assistant_name
+
+  = f.input :assistant_phone, :placeholder => '+61 314 159 265'
+
+  = f.input :assistant_email, :wrapper => :append, :class => 'inline' do
+    = f.input_field :assistant_email, :placeholder => 'jim.smith'
+    %span.add-on @c3.com.au
+
   .form-actions
     = f.button :submit, "Generate"
 

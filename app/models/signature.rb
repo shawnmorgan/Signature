@@ -58,6 +58,10 @@ class Signature
     "#{email}@c3.com.au" if email.present?
   end
 
+  def linkedin_name
+    custom_linkedin_url? ? name : default_linkedin_name
+  end
+
   def twitter=(value)
     @twitter = value.gsub(/\A@*/, '')
   end

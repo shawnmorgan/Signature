@@ -17,8 +17,8 @@ class Signature
   }
 
   LOGO_PATHS = {
-    'c3'  =>  'http://c3.com.au/images/ey_c3_email_signature_logo_x1.gif',
-    'imc' =>  'http://c3.com.au/images/ey_imc_email_signature_logo_x1.gif'
+    'c3'  =>  'http://c3.com.au/images/ey_c3_email_1.gif',
+    'imc' =>  'http://c3.com.au/images/ey_imc_email_1.gif'
   }
 
   attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo,

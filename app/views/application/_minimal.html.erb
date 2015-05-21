@@ -7,22 +7,20 @@
 
   &nbsp;
   <table width="600" cellpadding="10" cellspacing="0"  style="border-top: 2px solid #3900FE; border-right: 0px solid #FFFFFF; border-bottom: 0px solid #FFFFFF; border-left: 0px solid #FFFFFF;">
-    <tbody style="border: 0px solid #FFFFFF;">
-      <tr style="border: 0px solid #FFFFFF;">
-        <td valign="top" style="border: 0px solid #FFFFFF;">
-          <p style="font-family:Arial,sans-serif; font-weight:bold; font-size:12px; color:#000;">
-            <%= @signature.name %><br /><%= link_to @signature.company, @signature.website %>
-          </p>
-          <p style="font-family:Arial,sans-serif; font-weight:normal; font-size:11px; color:#000;">
-            <%- if @signature.assistant_name.present? -%>
-            Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}" %> | Email: <%= mail_to @signature.assistant_email %><br/>
-            <%- end -%>
-            Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}" %><br/>
-            Email: <%= mail_to @signature.full_email %>
-          </p>
-        </td>
-      </tr>
-    </tbody>
+    <tr style="border: 0px solid #FFFFFF;">
+      <td valign="top" style="border: 0px solid #FFFFFF;">
+        <p style="font-family:Arial,sans-serif; font-weight:bold; font-size:12px; color:#000;">
+          <%= @signature.name %><br /><%= link_to @signature.company, @signature.website, :style => 'color: blue;' %>
+        </p>
+        <p style="font-family:Arial,sans-serif; font-weight:normal; font-size:11px; color:#000;">
+          <%- if @signature.assistant_name.present? -%>
+          Assistant: <%= @signature.assistant_name %> | Phone: <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}", :style => 'color: blue;' %> | Email: <%= mail_to @signature.assistant_email, @signature.assistant_email, :style => 'color: blue;' %><br/>
+          <%- end -%>
+          Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}", :style => 'color: blue;' %><br/>
+          Email: <%= mail_to @signature.full_email, @signature.full_email, :style => 'color: blue;' %>
+        </p>
+      </td>
+    </tr>
   </table>
 
 </body>

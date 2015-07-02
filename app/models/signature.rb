@@ -50,14 +50,6 @@ class Signature
     @assistant_phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
   end
 
-  def email=(value)
-    @email = value.gsub(/@.*\Z/, '') if value.present?
-  end
-
-  def full_email
-    "#{email}@c3.com.au" if email.present?
-  end
-
   def linkedin_name
     custom_linkedin_url? ? name : default_linkedin_name
   end

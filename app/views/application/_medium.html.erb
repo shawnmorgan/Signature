@@ -17,7 +17,7 @@
     Assistant: <%= @signature.assistant_name %> | <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}", :style => 'color: blue;' %> | <%= mail_to @signature.assistant_email, @signature.assistant_email, :style => 'color: blue;' %><br/>
     <%- end -%>
     Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}", :style => 'color; blue;' %><br/>
-    Email: <%= mail_to @signature.full_email, @signature.full_email, :style => 'color: blue;' %><br/>
+    Email: <%= mail_to @signature.email, @signature.email, :style => 'color: blue;' %><br/>
     Twitter: <%- if @signature.custom_twitter? -%><%= link_to @signature.twitter_name, @signature.twitter_url, :style => 'color: blue;' %> &amp; <%- end -%><%= link_to @signature.default_twitter_name, @signature.default_twitter_url, :style => 'color: blue;' %><br/>
     Linkedin: <%- if @signature.custom_linkedin_url? -%><%= link_to @signature.linkedin_name, @signature.linkedin_url, :style => 'color: blue;' %> &amp; <%- end -%><%= link_to @signature.default_linkedin_name, @signature.default_linkedin_url, :style => 'color: blue;' %><br/>
     Website: <%= link_to @signature.website_host, @signature.website, :style => 'color: blue;' %> &amp; <%= link_to 'www.ey.com/analytics', 'http://www.ey.com/analytics', :style => 'color: blue;' %><br/>

@@ -18,9 +18,7 @@
 
   = f.input :company
 
-  = f.input :email, :wrapper => :append, :class => 'inline' do
-    = f.input_field :email, :placeholder => 'john.smith'
-    %span.add-on @c3.com.au
+  = f.input :email, :placeholder => 'john.smith@c3.com.au'
 
   = f.input :phone, :placeholder => '+61 314 159 265'
 

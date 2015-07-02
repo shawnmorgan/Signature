@@ -22,7 +22,7 @@
               </span>
               <br/><br/>
               <span style="font-family:Arial,sans-serif; font-size:11px; color:#000;">
-                C3 Business Solutions Pty Ltd, a member of the EY Global network.
+                C3 Business Solutions Pty Ltd, a member of the EY Global network.<br/>
                 <%= @signature.address %><br/>
                 <%- if @signature.assistant_name.present? -%>
                 Assistant: <%= @signature.assistant_name %> | <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}", :style => 'color: blue;' %> | <%= mail_to @signature.assistant_email, @signature.assistant_email, :style => 'color: blue;' %><br/>

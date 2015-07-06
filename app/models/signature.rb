@@ -42,14 +42,6 @@ class Signature
     define_method(attribute) { instance_variable_get("@#{attribute}").presence || send("default_#{attribute}") }
   end
 
-  def phone=(value)
-    @phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
-  end
-
-  def assistant_phone=(value)
-    @assistant_phone = number_to_phone value.gsub(/\A(\+61\s*)*/, '').gsub(/\A\s*0/, ''), country_code: 61, delimiter: ' ' if value.present?
-  end
-
   def linkedin_name
     custom_linkedin_url? ? name : default_linkedin_name
   end

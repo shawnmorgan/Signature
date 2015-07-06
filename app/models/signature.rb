@@ -66,6 +66,14 @@ class Signature
     twitter_to_url default_twitter
   end
 
+  def phone_href
+    "tel:#{phone.gsub(/\s/, '')}" if phone.present?
+  end
+
+  def assistant_phone_href
+    "tel:#{assistant_phone.gsub(/\s/, '')}" if assistant_phone.present?
+  end
+
   def company
     @company_name.presence || DEFAULTS[:company]
   end

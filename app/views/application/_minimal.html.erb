@@ -12,9 +12,9 @@
   <br/><br/>
   <span style="font-family:Arial,sans-serif; font-size:11px; color:#000;">
     C3 Business Solutions Pty Ltd, a member of the EY Global network.<br/>
-    Mobile: <%= link_to @signature.phone, "tel:#{@signature.phone}", :style => 'color; blue;' %> | <%= mail_to @signature.email, @signature.email, :style => 'color: blue;' %><br/>
+    Mobile: <%= link_to @signature.phone, @signature.phone_href, :style => 'color; blue;' %> | <%= mail_to @signature.email, @signature.email, :style => 'color: blue;' %><br/>
     <%- if @signature.assistant_name.present? -%>
-    Assistant: <%= @signature.assistant_name %> | <%= link_to @signature.assistant_phone, "tel:#{@signature.assistant_phone}", :style => 'color: blue;' %> | <%= mail_to @signature.assistant_email, @signature.assistant_email, :style => 'color: blue;' %><br/>
+    Assistant: <%= @signature.assistant_name %> | <%= link_to @signature.assistant_phone, @signature.assistant_phone_href, :style => 'color: blue;' %> | <%= mail_to @signature.assistant_email, @signature.assistant_email, :style => 'color: blue;' %><br/>
     <%- end -%>
   </span>
 

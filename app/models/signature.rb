@@ -11,7 +11,7 @@ class Signature
     company:  'EYC3',
     address:  'Level 4, 459 Little Collins St Melbourne, VIC 3000',
     website:  'http://c3.com.au/',
-    twitter:  'C3Business',
+    twitter:  'EYC3analytics',
     linkedin_name:  'EYC3',
     linkedin_url:   'http://www.linkedin.com/company/eyc3'
   }

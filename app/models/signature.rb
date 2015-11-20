@@ -9,11 +9,7 @@ class Signature
 
   DEFAULTS = {
     company:  'NextNet Partners',
-    address:  'Level 4, 459 Little Collins St Melbourne, VIC 3000',
     website:  'www.nextnetpartners.com',
-    twitter:  'EYC3analytics',
-    linkedin_name:  'EYC3',
-    linkedin_url:   'http://www.linkedin.com/company/eyc3'
   }
 
   LOGO_PATHS = {

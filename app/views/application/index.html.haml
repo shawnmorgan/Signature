@@ -12,52 +12,24 @@
 
 = simple_form_for(@signature, :url => root_path, :method => :get, :html => { :class => 'form-horizontal' }) do |f|
 
-  = f.input :name, :placeholder => 'Dr. John Smith'
+  = f.input :name, :placeholder => 'John Smith'
 
-  = f.input :role, :placeholder => 'Managing Consultant'
+  = f.input :role, :placeholder => 'Your Title'
 
   = f.input :company
 
-  = f.input :email, :placeholder => 'john.smith@c3.com.au'
+  = f.input :email, :placeholder => 'john.smith@nextnetpartners.com'
 
-  = f.input :phone, :placeholder => '+61 314 159 265'
+  = f.input :phone, :placeholder => '602-247-8600'
+  
+  = f.input :mobileNumber, :placeholder => '602-247-8600'
 
-  = f.input :linkedin_url, :input_html => { :class => 'input-xxlarge' }, :label => 'Linkedin URL'
-
-  = f.input :twitter, :wrapper => :prepend, :class => 'inline' do
-    %span.add-on @
-    = f.input_field :twitter, :placeholder => 'EYC3analytics'
-
-  = f.input :address, :input_html => { :class => 'input-xxlarge' }
-
-  = f.input :logo, collection: %w( c3 imc ), include_blank: false
-
-  = f.input :website
-
-  = f.input :assistant_name
-
-  = f.input :assistant_phone, :placeholder => '+61 314 159 265'
-
-  = f.input :assistant_email, :placeholder => 'jim.smith@c3.com.au'
 
   .form-actions
     = f.button :submit, "Generate"
 
 - if @valid
 
-  %h4 Minimal
-  .row
-    .span2
-      = link_to 'Download', url_for(:action => 'download', :size => 'minimal', :signature => params[:signature]), :class => 'btn'
-    .span10
-      %iframe{:src => url_for(:action => 'preview', :size => 'minimal', :signature => params[:signature]), :width => '100%', :height => '240'}
-
-  %h4 Medium
-  .row
-    .span2
-      = link_to 'Download', url_for(:action => 'download', :size => 'medium', :signature => params[:signature]), :class => 'btn'
-    .span10
-      %iframe{:src => url_for(:action => 'preview', :size => 'medium', :signature => params[:signature]), :width => '100%', :height => '240'}
 
   %h4 Full-sized
   .row

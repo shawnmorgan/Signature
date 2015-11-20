@@ -1,4 +1,4 @@
-%h2 EY C3 Signature Maker
+%h2 NextNet Partners Signature Maker
 %hr
 
 - if @signature.errors.present?
@@ -22,7 +22,23 @@
 
   = f.input :phone, :placeholder => '+61 314 159 265'
 
- 
+  = f.input :linkedin_url, :input_html => { :class => 'input-xxlarge' }, :label => 'Linkedin URL'
+
+  = f.input :twitter, :wrapper => :prepend, :class => 'inline' do
+    %span.add-on @
+    = f.input_field :twitter, :placeholder => 'EYC3analytics'
+
+  = f.input :address, :input_html => { :class => 'input-xxlarge' }
+
+  = f.input :logo, collection: %w( c3 imc ), include_blank: false
+
+  = f.input :website
+
+  = f.input :assistant_name
+
+  = f.input :assistant_phone, :placeholder => '+61 314 159 265'
+
+  = f.input :assistant_email, :placeholder => 'jim.smith@c3.com.au'
 
   .form-actions
     = f.button :submit, "Generate"

@@ -49,7 +49,7 @@ class Signature
     "tel:#{phone.gsub(/\s/, '')}" if phone.present?
   end
   
-  def mobileNumber
+  def mobileNumber_href
     "tel: #{mobileNumber.gsub(/\s/, '')}" if mobileNumber.present?
   end
 

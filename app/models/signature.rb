@@ -8,9 +8,9 @@ class Signature
   include ActionView::Helpers::NumberHelper
 
   DEFAULTS = {
-    company:  'EYC3',
+    company:  'NextNet Partners',
     address:  'Level 4, 459 Little Collins St Melbourne, VIC 3000',
-    website:  'http://c3.com.au/',
+    website:  'www.nextnetpartners.com',
     twitter:  'EYC3analytics',
     linkedin_name:  'EYC3',
     linkedin_url:   'http://www.linkedin.com/company/eyc3'
@@ -24,9 +24,9 @@ class Signature
   attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo,
                 :assistant_name, :assistant_phone, :assistant_email
 
-  validates :name, :role, :phone, :email, :company, :address, :website, :twitter, :linkedin_name, :linkedin_url, :logo, presence: true
+  validates :name, :role, :phone, :email, presence: true
   validates :assistant_phone, :assistant_email, :presence => true, :if => Proc.new { |r| r.assistant_name.present? }
-  validates :logo, inclusion: %w( c3 imc )
+  
 
   def persisted?
     false
@@ -42,30 +42,7 @@ class Signature
     define_method(attribute) { instance_variable_get("@#{attribute}").presence || send("default_#{attribute}") }
   end
 
-  def linkedin_name
-    custom_linkedin_url? ? name : default_linkedin_name
-  end
-
-  def twitter=(value)
-    @twitter = value.gsub(/\A@*/, '')
-  end
-
-  def twitter_name
-    twitter_to_name twitter
-  end
-
-  def default_twitter_name
-    twitter_to_name default_twitter
-  end
-
-  def twitter_url
-    twitter_to_url twitter
-  end
-
-  def default_twitter_url
-    twitter_to_url default_twitter
-  end
-
+  
   def phone_href
     "tel:#{phone.gsub(/\s/, '')}" if phone.present?
   end

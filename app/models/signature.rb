@@ -23,10 +23,10 @@ class Signature
     'imc' =>  'http://c3.com.au/images/ey_imc_email_1.gif'
   }
 
-  attr_accessor :name, :role, :phone, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo,
+  attr_accessor :name, :role, :phone, :mobileNumber, :email, :linkedin_name, :linkedin_url, :twitter, :company, :address, :website, :logo,
                 :assistant_name, :assistant_phone, :assistant_email
 
-  validates :name, :role, :phone, :email, presence: true
+  validates :name, :role, :phone, :email, :mobileNumber, presence: true
   validates :assistant_phone, :assistant_email, :presence => true, :if => Proc.new { |r| r.assistant_name.present? }
   
 
@@ -47,6 +47,10 @@ class Signature
   
   def phone_href
     "tel:#{phone.gsub(/\s/, '')}" if phone.present?
+  end
+  
+  def mobileNumber
+    "tel: #{mobileNumber.gsub(/\s/, '')}" if mobileNumber.present?
   end
 
   def assistant_phone_href
